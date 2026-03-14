@@ -377,7 +377,7 @@ export default function MainMenu() {
           role="dialog"
           aria-modal="true"
         >
-          <div className="relative w-full max-w-4xl overflow-hidden rounded-2xl border border-white/15 bg-[rgba(255,255,255,0.08)] backdrop-blur-lg shadow-2xl">
+          <div className="relative w-full max-w-4xl overflow-hidden rounded-2xl border border-white/15 bg-[rgba(255,255,255,0.08)] backdrop-blur-lg shadow-2xl text-white">
             <button
               onClick={() => setSelectedWork(null)}
               className="absolute right-3 top-3 z-10 rounded-full bg-[rgba(0,0,0,0.55)] px-3 py-1 text-sm font-semibold text-white hover:bg-[rgba(0,0,0,0.7)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent)]"
@@ -393,14 +393,16 @@ export default function MainMenu() {
                 sizes="(min-width:1024px) 900px, 100vw"
               />
             </div>
-            <div className="flex items-center justify-between gap-3 px-5 py-4">
+            <div className="flex items-center justify-between gap-3 px-5 py-4 bg-[rgba(0,0,0,0.55)] backdrop-blur-lg text-white">
               <div>
-                <div className="text-xs uppercase tracking-[0.14em] text-[var(--text-subtle)]">{selectedWork.category}</div>
-                <div className="text-lg font-semibold text-[var(--text-strong)]">{selectedWork.title}</div>
+                <div className="text-xs uppercase tracking-[0.14em] text-white/80 drop-shadow-sm">
+                  {selectedWork.category}
+                </div>
+                <div className="text-lg font-semibold text-white drop-shadow-md">{selectedWork.title}</div>
               </div>
               <button
                 onClick={() => setSelectedWork(null)}
-                className="rounded-md border border-[var(--card-border)] px-3 py-2 text-sm font-semibold text-[var(--text-strong)] hover:bg-[var(--muted)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent)]"
+                className="rounded-md border border-white/30 px-3 py-2 text-sm font-semibold text-white hover:bg-white/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent)]"
               >
                 Got it
               </button>
