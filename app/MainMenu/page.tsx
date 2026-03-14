@@ -1,5 +1,5 @@
 "use client";
-
+import React from "react";
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import type { StaticImageData } from "next/image";
@@ -19,7 +19,7 @@ import webTemplete from "../../public/assets/webTemplete.png";
 type Service = {
   title: string;
   desc: string;
-  icon: JSX.Element;
+  icon: React.ReactNode;
   cta?: string;
 };
 
