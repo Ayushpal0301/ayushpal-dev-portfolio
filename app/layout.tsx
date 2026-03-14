@@ -14,6 +14,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Ayush Pal - Portfolio",
+  
   description: "Developed by Ayush Pal, a passionate software developer specializing in web development and open-source contributions. Explore my projects, skills, and experience in the world of technology.",
 };
 
