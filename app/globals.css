@@ -1,28 +1,42 @@
-@import "tailwindcss";
 @import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Poppins:wght@500;600;700&display=swap");
+@import "tailwindcss";
 
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --page-bg: #eef0f7;
+  --card: #ffffff;
+  --card-border: #ececf3;
+  --text-strong: #1f1f27;
+  --text-subtle: #7f7f90;
+  --muted: #f4f4fb;
+  --gutter: #e6e6eb;
+  --accent: #f2aa41;
+}
+
+[data-theme="dark"] {
+  --background: #0f111a;
+  --foreground: #f5f6fb;
+  --page-bg: #0f111a;
+  --card: #161925;
+  --card-border: #252a38;
+  --text-strong: #f5f6fb;
+  --text-subtle: #a5acc0;
+  --muted: #1f2330;
+  --gutter: #1b1e29;
+  --accent: #f2aa41;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  --color-background: var(--page-bg);
+  --color-foreground: var(--text-strong);
   --font-sans: "Manrope", "Poppins", system-ui, -apple-system, sans-serif;
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 body {
   margin: 0;
-  background: var(--background);
-  color: var(--foreground);
+  background: var(--page-bg);
+  color: var(--text-strong);
   font-family: var(--font-sans);
 }

@@ -1,3 +1,7 @@
+"use client";
+
+import { useTheme } from "../theme-provider";
+
 type NavItem = {
   label: string;
   active?: boolean;
@@ -5,7 +9,6 @@ type NavItem = {
 };
 
 const navItems: NavItem[] = [
-  { label: "Theme", path: "M12 3c-1 1.2-1.6 2.7-1.6 4.4A6.6 6.6 0 0 0 17 14c1.7 0 3.2-.6 4.4-1.6A9 9 0 1 1 12 3Z" },
   {
     label: "Home",
     active: true,
@@ -18,24 +21,44 @@ const navItems: NavItem[] = [
   { label: "Contact", path: "M4 7h16v10H4V7Zm2 2v6h12V9H6Zm1.5 1.5 3.5 2.5 3.5-2.5" },
 ];
 
+const moonPath = "M12 3c-1 1.2-1.6 2.7-1.6 4.4A6.6 6.6 0 0 0 17 14c1.7 0 3.2-.6 4.4-1.6A9 9 0 1 1 12 3Z";
+const sunPath =
+  "M12 8a4 4 0 1 0 0 8a4 4 0 0 0 0-8Zm0-5a1 1 0 0 1 1 1v1a1 1 0 1 1-2 0V4a1 1 0 0 1 1-1Zm0 17a1 1 0 0 1 1 1v1a1 1 0 1 1-2 0v-1a1 1 0 0 1 1-1Zm9-7a1 1 0 0 1-1 1h-1a1 1 0 1 1 0-2h1a1 1 0 0 1 1 1ZM6 12a1 1 0 0 1-1 1H4a1 1 0 0 1 0-2h1a1 1 0 0 1 1 1Zm10.95-5.95a1 1 0 0 1 0 1.4l-.7.71a1 1 0 0 1-1.41-1.42l.71-.7a1 1 0 0 1 1.4 0ZM8.46 17.54a1 1 0 0 1 0 1.4l-.71.71a1 1 0 0 1-1.41-1.42l.71-.7a1 1 0 0 1 1.4 0ZM18.95 15.54a1 1 0 0 1-1.4 0l-.71-.71a1 1 0 0 1 1.42-1.41l.7.71a1 1 0 0 1 0 1.4ZM7.46 8.46a1 1 0 0 1-1.4 0l-.71-.71A1 1 0 0 1 6.77 6.34l.7.71a1 1 0 0 1 0 1.41Z";
+
 export default function RightsideMenu() {
+  const { theme, toggleTheme } = useTheme();
+
   return (
-    <aside className="relative flex flex-col items-center">
-      <div className="absolute inset-y-0 right-0  " aria-hidden />
-      <div className="z-10 h-328.75 flex flex-col items-center gap-4 w-20 bg-white px-3 py-5 shadow-sm border border-[#ececf3]">
+    <aside className="relative flex flex-col items-center bg-[var(--card)] ">
+      <div className="  inset-y-0 right-0 w-20 " aria-hidden />
+
+      <button
+        onClick={toggleTheme}
+        aria-label="Toggle theme"
+        className="mb-4 mt-4 grid h-11 w-11 place-items-center rounded-full border border-[var(--card-border)] bg-[var(--card)] text-[var(--text-strong)] shadow-sm hover:bg-[var(--muted)]"
+      >
+        <svg
+          viewBox="0 0 24 24"
+          className="h-5 w-5 fill-[var(--text-strong)]"
+        >
+          <path d={theme === "light" ? moonPath : sunPath} />
+        </svg>
+      </button>
+
+      <div className="z-10 flex flex-col items-center mt-30 gap-4 w-20 bg-[var(--card)] px-3 py-5  border-[var(--card-border)]">
         {navItems.map((item) => (
           <div key={item.label}>
             <button
               className={`grid h-12 w-12 place-items-center rounded-full border transition shadow-sm ${
                 item.active
-                  ? "border-[#f3c96b] bg-[#f3b321] text-white"
-                  : "border-transparent bg-[#f4f4fb] text-[#7c7c8d] hover:bg-[#ececf6]"
+                  ? "border-[var(--accent)] bg-[var(--accent)] text-white"
+                  : "border-transparent bg-[var(--muted)] text-[var(--text-subtle)] hover:bg-[var(--card-border)]/30"
               }`}
               aria-label={item.label}
             >
               <svg
                 viewBox="0 0 24 24"
-                className={`h-5 w-5 ${item.active ? "fill-white" : "fill-[#7c7c8d]"}`}
+                className={`h-5 w-5 ${item.active ? "fill-white" : "fill-[var(--text-subtle)]"}`}
               >
                 <path d={item.path} />
               </svg>
