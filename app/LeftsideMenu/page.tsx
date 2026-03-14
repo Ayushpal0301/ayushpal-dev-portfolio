@@ -40,7 +40,7 @@ const ProgressBar = ({ value }: { value: number }) => (
 
 export default function LeftsideMenu() {
   return (
-    <aside className="w-[320px] min-h-screen bg-[var(--card)] border border-[var(--card-border)] px-8 py-10 flex flex-col gap-8 shadow-sm">
+    <aside className="w-[320px] h-328.75 bg-[var(--card)] border border-[var(--card-border)] px-8 py-10 flex flex-col gap-8 shadow-sm">
       <div className="flex flex-col items-center text-center gap-3">
         <div className="relative">
           <div className="absolute inset-0 rounded-full border-[6px] border-[#f4c15d]/40" />
@@ -55,7 +55,7 @@ export default function LeftsideMenu() {
           Ayush Pal
         </div>
         <div className="text-sm font-medium text-[var(--text-subtle)]">
-          Front-End Developer
+          Web Developer
         </div>
         <div className="flex items-center gap-3">
           {socialIcons.map((icon) => (
@@ -87,7 +87,13 @@ export default function LeftsideMenu() {
             className="flex justify-between items-center rounded-[8px] border border-[var(--muted)] px-3 py-2 bg-[var(--muted)]"
           >
             <span className="font-semibold text-[var(--accent)]">{label}</span>
-            <span className="justify-self-end font-semibold text-[var(--text-strong)]">
+            <span
+              className={`justify-self-end font-semibold ${
+                label === "Freelance:"
+                  ? "text-[#64cc5a]"
+                  : "text-[var(--text-strong)]"
+              }`}
+            >
               {value}
             </span>
           </div>

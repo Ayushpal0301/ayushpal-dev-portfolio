@@ -29,7 +29,7 @@ export default function RightsideMenu() {
   const { theme, toggleTheme } = useTheme();
 
   return (
-    <aside className="relative flex flex-col items-center bg-[var(--card)] ">
+    <aside className="relative h-328.75 flex flex-col items-center bg-[var(--card)] ">
       <div className="  inset-y-0 right-0 w-20 " aria-hidden />
 
       <button
