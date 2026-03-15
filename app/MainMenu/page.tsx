@@ -722,7 +722,7 @@ export default function MainMenu() {
                       {(selectedBlog.features ?? features.map((f) => f.title)).map((item, idx) => (
                         <li key={idx} className="text-sm text-white/85 leading-relaxed">
                           <span className="mr-2 text-[var(--accent)] font-semibold">Ã¢ÂÂ¢</span>
-                          {item.title ?? item}
+                          {item}
                         </li>
                       ))}
                     </ul>
