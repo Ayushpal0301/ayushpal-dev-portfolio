@@ -721,7 +721,7 @@ export default function MainMenu() {
                     <ul className="space-y-1">
                       {(selectedBlog.features ?? features.map((f) => f.title)).map((item, idx) => (
                         <li key={idx} className="text-sm text-white/85 leading-relaxed">
-                          <span className="mr-2 text-[var(--accent)] font-semibold">Ã¢ÂÂ¢</span>
+                          <span className="mr-2 text-[var(--accent)] font-semibold">•</span>
                           {item}
                         </li>
                       ))}
