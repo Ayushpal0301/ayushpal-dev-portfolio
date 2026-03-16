@@ -13,8 +13,6 @@ import branding6 from "../../public/assets/branding6.png";
 import branding7 from "../../public/assets/branding7.png";
 import uiDesign from "../../public/assets/uiDesign.png";
 import webTemplete from "../../public/assets/webTemplete.png";
-import branding3Large from "../../public/assets/branding3.png";
-import branding4Large from "../../public/assets/branding4.png";
 import bookStore from "../../public/assets/bookStore.png";
 import gharKira from "../../public/assets/gharKira.png"; 
 import landingpage from "../../public/assets/landingpage.png"; 
@@ -109,7 +107,7 @@ const recommendations = [
 const education = [
   {
     title: "Rajiv Gandhi Prodyogiki Vishwavidyalaya",
-    subtitle: "Bachelor of Technology (B.Tech) Ã¢ÂÂ Computer Science",
+    subtitle: "Bachelor of Technology (B.Tech) Computer Science",
     role: "Student",
     timeframe: "Jun 2021 - Jun 2025",
     desc: "Studied core subjects related to computer science including web development, database management, and programming fundamentals. Worked on several practical projects such as e-commerce websites and web applications.",
