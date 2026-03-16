@@ -164,9 +164,13 @@ export default function LeftsideMenu() {
             </div>
           ))}
         </div>
-        <button className="mt-3 flex items-center justify-center gap-2 rounded-md border border-[var(--accent)] bg-[var(--accent)] px-4 py-3 text-sm font-semibold text-[var(--text-strong)] transition hover:bg-transparent hover:text-[var(--accent)] cursor-pointer">
+        <a
+          href="/assets/Ayush%20Pal%20Resume.pdf"
+          download
+          className="mt-3 flex items-center justify-center gap-2 rounded-md border border-[var(--accent)] bg-[var(--accent)] px-4 py-3 text-sm font-semibold text-[var(--text-strong)] transition hover:bg-transparent hover:text-[var(--accent)] cursor-pointer"
+        >
           Download CV
-        </button>
+        </a>
       </div>
     </aside>
   );
