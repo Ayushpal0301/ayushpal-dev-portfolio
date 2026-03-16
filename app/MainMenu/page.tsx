@@ -33,15 +33,20 @@ const techLogos = [
 
 type Service = {
   title: string;
-  desc: string;
+  shortDesc: string;
+  longDesc: string;
   icon: React.ReactNode;
   cta?: string;
+  features?: string[];
 };
 
 const services: Service[] = [
   {
     title: "Web Development",
-    desc: "Building responsive and modern websites using React and Next.js.",
+    shortDesc: "I build modern, responsive, and high-performance websites using the latest web technologies..",
+    longDesc:
+      "I create responsive and dynamic websites using modern technologies like React and Next.js. My focus is on building fast, scalable, and user-friendly web applications that provide a seamless experience across all devices.",
+    features: ["Responsive website", "SEO friendly structure", "Fast loading speed"],
     icon: (
       <svg viewBox="0 0 24 24" className="h-14 w-14 stroke-current" fill="none" strokeWidth="1.4">
         <rect x="3" y="4" width="18" height="12" rx="1.5" />
@@ -52,7 +57,10 @@ const services: Service[] = [
   },
   {
     title: "UI/UX Design",
-    desc: "Designing attractive and user-friendly interfaces.",
+    shortDesc: "Designing clean, modern, and user-friendly interfaces that improve user experience.",
+    longDesc:
+      "I design intuitive and visually appealing user interfaces that enhance user experience. My approach focuses on usability, accessibility, and modern design principles to ensure that users can easily interact with the product.",
+    features: ["Modern UI design", "Modern UI design", "Clean design system"],
     icon: (
       <svg viewBox="0 0 24 24" className="h-14 w-14 stroke-current" fill="none" strokeWidth="1.4">
         <rect x="4" y="4" width="16" height="12" rx="1.5" />
@@ -63,7 +71,10 @@ const services: Service[] = [
   },
   {
     title: "Frontend Development",
-    desc: "Creating clean UI designs with fast performance.",
+    shortDesc: "Developing interactive and responsive user interfaces using modern frontend frameworks.",
+    longDesc:
+      "I specialize in frontend development using technologies like React, Next.js, HTML, CSS, and JavaScript to create interactive and responsive user interfaces. My goal is to deliver fast, accessible, and visually engaging web experiences.",
+    features: ["React / Next.js applications", "React / Next.js applications", "Interactive UI components"],
     icon: (
       <svg viewBox="0 0 24 24" className="h-14 w-14 stroke-current" fill="none" strokeWidth="1.4">
         <path d="M9 7a3 3 0 1 1 6 0v4a3 3 0 1 1-6 0V7Z" />
@@ -230,6 +241,7 @@ export default function MainMenu() {
   const [index, setIndex] = useState(0);
   const [activeCategory, setActiveCategory] = useState<"All" | "UI Design"| "Branding">("All");
   const [selectedWork, setSelectedWork] = useState<Work | null>(null);
+  const [selectedService, setSelectedService] = useState<Service | null>(null);
   const [selectedBlog, setSelectedBlog] = useState<BlogPost | null>(null);
   const [showAllBlogs, setShowAllBlogs] = useState(false);
   const [formData, setFormData] = useState({ name: "", email: "", phone: "", subject: "", message: "" });
@@ -287,6 +299,13 @@ export default function MainMenu() {
     }
   };
 
+  const scrollToContact = () => {
+    const el = document.getElementById("contact");
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  };
+
   return (
     <main className="flex-1 bg-[var(--page-bg)]">
       <section
@@ -306,7 +325,10 @@ export default function MainMenu() {
               I build responsive, modern web apps with React, Next.js, HTML, CSS, and JavaScript. Currently learning the MERN stack while shipping clean UI and reliable front-end foundations.
             </p>
             <div className="flex flex-wrap items-center gap-4 pt-5">
-              <button className="rounded-md bg-[var(--accent)] px-6 py-3 text-sm font-semibold text-[var(--text-strong)] shadow hover:brightness-105 transition">
+              <button
+                onClick={scrollToContact}
+                className="rounded-md bg-[var(--accent)] px-6 py-3 text-sm font-semibold text-[var(--text-strong)] shadow hover:brightness-105 transition cursor-pointer"
+              >
                 Hire Me
               </button>
             </div>
@@ -350,14 +372,23 @@ export default function MainMenu() {
           {services.map((service) => (
             <div
               key={service.title}
-              className="group rounded-xl border border-[var(--card-border)] bg-[var(--card)] p-8 shadow-sm transition hover:-translate-y-1 hover:shadow-lg flex flex-col items-center text-center gap-4"
+              className="group rounded-xl border border-[var(--card-border)] bg-[var(--card)] p-8 shadow-sm transition hover:-translate-y-1 hover:shadow-lg flex flex-col items-center text-center gap-4 cursor-pointer"
+              role="button"
+              tabIndex={0}
+              onClick={() => setSelectedService(service)}
+              onKeyDown={(e) => {
+                if (e.key === "Enter" || e.key === " ") {
+                  e.preventDefault();
+                  setSelectedService(service);
+                }
+              }}
             >
               <div className="text-[var(--accent)]">{service.icon}</div>
               <h3 className="text-xl font-semibold text-[var(--text-strong)]">
                 {service.title}
               </h3>
               <p className="text-sm text-[var(--text-subtle)] leading-relaxed max-w-[240px]">
-                {service.desc}
+                {service.shortDesc}
               </p>
               {service.cta && (
                 <button className="mt-1 text-xs font-semibold uppercase tracking-[0.08em] text-[var(--accent)]">
@@ -368,6 +399,68 @@ export default function MainMenu() {
           ))}
         </div>
       </section>
+
+      {selectedService && (
+        <div
+          className="fixed inset-0 z-[65] flex items-center justify-center bg-[rgba(0,0,0,0.55)] backdrop-blur-sm p-3 sm:p-4"
+          role="dialog"
+          aria-modal="true"
+        >
+          <div className="relative w-full max-w-3xl rounded-2xl border border-white/15 bg-[var(--card)] text-[var(--text-strong)] shadow-2xl overflow-hidden">
+            <button
+              onClick={() => setSelectedService(null)}
+              className="absolute right-3 top-3 z-10 rounded-full bg-[var(--muted)] px-3 py-1 text-xs sm:text-sm font-semibold text-[var(--text-strong)] hover:bg-[var(--card-border)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent)] cursor-pointer"
+            >
+              Close
+            </button>
+            <div className="flex flex-col sm:flex-row gap-5 p-6 sm:p-8">
+              <div className="flex-shrink-0 self-start rounded-2xl border border-[var(--card-border)] bg-[var(--muted)] p-4 text-[var(--accent)]">
+                {selectedService.icon}
+              </div>
+              <div className="space-y-4">
+                <div className="space-y-2">
+                  <div className="text-xs uppercase tracking-[0.14em] text-[var(--text-subtle)]">Service Detail</div>
+                  <h3 className="text-2xl font-bold text-[var(--text-strong)]">{selectedService.title}</h3>
+                  <p className="text-sm leading-relaxed text-[var(--text-subtle)]">{selectedService.longDesc}</p>
+                </div>
+                {selectedService.features && selectedService.features.length > 0 && (
+                  <div className="space-y-2">
+                    <div className="text-xs font-semibold uppercase tracking-[0.12em] text-[var(--text-subtle)]">Features</div>
+                    <ul className="grid sm:grid-cols-2 gap-2 text-sm text-[var(--text-strong)]">
+                      {selectedService.features.map((feat, idx) => (
+                        <li
+                          key={idx}
+                          className="flex items-start gap-2 rounded-md border border-[var(--card-border)] bg-[var(--muted)] px-3 py-2"
+                        >
+                          <span className="mt-0.5 h-2 w-2 rounded-full bg-[var(--accent)]" />
+                          <span className="leading-snug text-[var(--text-subtle)]">{feat}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+                <div className="flex flex-wrap gap-3">
+                  <button
+                    onClick={() => {
+                      setSelectedService(null);
+                      scrollToContact();
+                    }}
+                    className="rounded-md bg-[var(--accent)] px-4 py-2 text-sm font-semibold text-[var(--text-strong)] shadow hover:brightness-105 transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent)] cursor-pointer"
+                  >
+                    Contact Me
+                  </button>
+                  <button
+                    onClick={() => setSelectedService(null)}
+                    className="rounded-md border border-[var(--card-border)] bg-[var(--card)] px-4 py-2 text-sm font-semibold text-[var(--text-strong)] hover:bg-[var(--muted)] transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent)] cursor-pointer"
+                  >
+                    Close
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
 
       <section id="recommendations" className="mt-12 px-6 py-14 bg-[var(--muted)] rounded-2xl border border-[var(--card-border)]">
         <div className="text-center mb-10">
@@ -462,7 +555,7 @@ export default function MainMenu() {
             <button
               key={cat}
               onClick={() => setActiveCategory(cat as any)}
-              className={`px-3 py-1 transition ${
+              className={`px-3 py-1 transition cursor-pointer ${
                 activeCategory === cat
                   ? "text-[var(--accent)]"
                   : "hover:text-[var(--text-strong)]"
@@ -486,7 +579,7 @@ export default function MainMenu() {
                     setSelectedWork(item);
                   }
                 }}
-                className="group relative overflow-hidden rounded-xl border border-[var(--card-border)] bg-[var(--card)] shadow-sm text-left focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent)]"
+                className="group relative overflow-hidden rounded-xl border border-[var(--card-border)] bg-[var(--card)] shadow-sm text-left focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent)] cursor-pointer"
               >
                 <div className="relative aspect-square overflow-hidden">
                   <Image
@@ -518,7 +611,7 @@ export default function MainMenu() {
           <div className="relative w-full max-w-5xl max-h-[92vh] overflow-hidden rounded-2xl border border-white/15 bg-[rgba(255,255,255,0.08)] backdrop-blur-lg shadow-2xl text-white flex flex-col">
             <button
               onClick={() => setSelectedWork(null)}
-              className="absolute right-2 top-2 sm:right-3 sm:top-3 z-10 rounded-full bg-[rgba(0,0,0,0.6)] px-3 py-1 text-xs sm:text-sm font-semibold text-white hover:bg-[rgba(0,0,0,0.75)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent)]"
+              className="absolute right-2 top-2 sm:right-3 sm:top-3 z-10 rounded-full bg-[rgba(0,0,0,0.6)] px-3 py-1 text-xs sm:text-sm font-semibold text-white hover:bg-[rgba(0,0,0,0.75)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent)] cursor-pointer"
             >
               Close
             </button>
@@ -543,7 +636,7 @@ export default function MainMenu() {
               </div>
               <button
                 onClick={() => setSelectedWork(null)}
-                className="w-full sm:w-auto rounded-md border border-white/30 px-4 py-2 text-sm font-semibold text-white hover:bg-white/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent)]"
+                className="w-full sm:w-auto rounded-md border border-white/30 px-4 py-2 text-sm font-semibold text-white hover:bg-white/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent)] cursor-pointer"
               >
                 Got it
               </button>
@@ -566,7 +659,7 @@ export default function MainMenu() {
             <button
               key={post.title + index}
               onClick={() => setSelectedBlog(post)}
-              className="text-left rounded-xl overflow-hidden border border-[var(--card-border)] bg-[var(--card)] shadow-sm hover:shadow-lg transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent)]"
+              className="text-left rounded-xl overflow-hidden border border-[var(--card-border)] bg-[var(--card)] shadow-sm hover:shadow-lg transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent)] cursor-pointer"
             >
               <div className="relative h-56 w-full overflow-hidden bg-[var(--muted)]">
                 <Image
@@ -596,7 +689,7 @@ export default function MainMenu() {
             <button
               type="button"
               onClick={() => setShowAllBlogs((prev) => !prev)}
-              className="rounded-md bg-[var(--accent)] px-5 py-2.5 text-sm font-semibold text-[var(--text-strong)] shadow hover:brightness-105 transition"
+              className="rounded-md bg-[var(--accent)] px-5 py-2.5 text-sm font-semibold text-[var(--text-strong)] shadow hover:brightness-105 transition cursor-pointer"
             >
               {showAllBlogs ? "View Less" : "View More"}
             </button>
@@ -605,7 +698,7 @@ export default function MainMenu() {
       </section>
 
       {/* Contact Form */}
-      <section className="mt-12 px-6 py-14 rounded-2xl">
+      <section id="contact" className="mt-12 px-6 py-14 rounded-2xl">
         <div className="max-w-3xl mx-auto p-8 sm:p-10">
           <h2 className="text-3xl font-bold text-[var(--text-strong)] mb-8">Leave Us Your Info</h2>
           <form className="space-y-6" onSubmit={handleSubmit}>
@@ -671,7 +764,7 @@ export default function MainMenu() {
             <button
               type="submit"
               disabled={formStatus === "sending"}
-              className="inline-flex items-center justify-center rounded-md bg-[var(--accent)] px-6 py-3 text-sm font-semibold text-[var(--text-strong)] shadow hover:brightness-105 transition disabled:opacity-60 disabled:cursor-not-allowed"
+              className="inline-flex items-center justify-center rounded-md bg-[var(--accent)] px-6 py-3 text-sm font-semibold text-[var(--text-strong)] shadow hover:brightness-105 transition disabled:opacity-60 disabled:cursor-not-allowed cursor-pointer"
             >
               {formStatus === "sending" ? "Sending..." : "Send Message"}
             </button>
@@ -694,7 +787,7 @@ export default function MainMenu() {
           <div className="relative w-full max-w-5xl max-h-[92vh] overflow-hidden rounded-2xl border border-white/15 bg-[rgba(255,255,255,0.08)] backdrop-blur-lg shadow-2xl text-white">
             <button
               onClick={() => setSelectedBlog(null)}
-              className="absolute right-3 top-3 z-10 rounded-full bg-[rgba(0,0,0,0.4)] px-3 py-1 text-xs sm:text-sm font-semibold text-white hover:bg-[rgba(0,0,0,0.55)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent)]"
+              className="absolute right-3 top-3 z-10 rounded-full bg-[rgba(0,0,0,0.4)] px-3 py-1 text-xs sm:text-sm font-semibold text-white hover:bg-[rgba(0,0,0,0.55)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent)] cursor-pointer"
             >
               Close
             </button>
@@ -745,7 +838,7 @@ export default function MainMenu() {
               </div>
               <button
                 onClick={() => setSelectedBlog(null)}
-                className="w-full sm:w-auto rounded-md border border-white/30 px-4 py-2 text-sm font-semibold text-white hover:bg-white/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent)]"
+                className="w-full sm:w-auto rounded-md border border-white/30 px-4 py-2 text-sm font-semibold text-white hover:bg-white/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent)] cursor-pointer"
               >
                 Got it
               </button>

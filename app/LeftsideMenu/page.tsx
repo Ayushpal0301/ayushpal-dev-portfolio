@@ -59,7 +59,7 @@ export default function LeftsideMenu() {
               href={icon.href}
               target="_blank"
               rel="noreferrer"
-              className="h-10 w-10 rounded-full border border-[var(--card-border)] bg-[var(--card)] text-[var(--accent)] shadow-sm grid place-items-center hover:-translate-y-0.5 transition"
+              className="h-10 w-10 rounded-full border border-[var(--card-border)] bg-[var(--card)] text-[var(--accent)] shadow-sm grid place-items-center hover:-translate-y-0.5 transition cursor-pointer"
               aria-label={icon.label}
             >
               <svg viewBox="0 0 24 24" className="h-5 w-5 fill-current">
@@ -164,7 +164,7 @@ export default function LeftsideMenu() {
             </div>
           ))}
         </div>
-        <button className="mt-3 flex items-center justify-center gap-2 rounded-md border border-[var(--accent)] bg-[var(--accent)] px-4 py-3 text-sm font-semibold text-[var(--text-strong)] transition hover:bg-transparent hover:text-[var(--accent)]">
+        <button className="mt-3 flex items-center justify-center gap-2 rounded-md border border-[var(--accent)] bg-[var(--accent)] px-4 py-3 text-sm font-semibold text-[var(--text-strong)] transition hover:bg-transparent hover:text-[var(--accent)] cursor-pointer">
           Download CV
         </button>
       </div>

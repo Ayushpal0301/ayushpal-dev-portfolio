@@ -89,7 +89,7 @@ export default function RightsideMenu() {
       <button
         onClick={toggleTheme}
         aria-label="Toggle theme"
-        className="mb-4 mt-4 grid h-11 w-11 place-items-center rounded-full border border-[var(--card-border)] bg-[var(--card)] text-[var(--text-strong)] shadow-sm hover:bg-[var(--muted)]"
+        className="mb-4 mt-4 grid h-11 w-11 place-items-center rounded-full border border-[var(--card-border)] bg-[var(--card)] text-[var(--text-strong)] shadow-sm hover:bg-[var(--muted)] cursor-pointer"
       >
         <svg
           viewBox="0 0 24 24"
@@ -104,7 +104,7 @@ export default function RightsideMenu() {
           <div key={item.label} className="relative group">
             <button
               onClick={() => handleClick(item)}
-              className={`grid h-12 w-12 place-items-center rounded-full border transition shadow-sm ${
+              className={`grid h-12 w-12 place-items-center rounded-full border transition shadow-sm cursor-pointer ${
                 item.id === activeId
                   ? "border-[#f2aa41] bg-[#f2aa41] text-white"
                   : "border-transparent bg-[var(--muted)] text-[var(--text-subtle)] hover:bg-[var(--card-border)]/30"
