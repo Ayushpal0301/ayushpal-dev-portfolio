@@ -289,7 +289,10 @@ export default function MainMenu() {
 
   return (
     <main className="flex-1 bg-[var(--page-bg)]">
-      <section className="grid grid-cols-1 lg:grid-cols-[1.3fr,1fr] gap-8 bg-[var(--card)] rounded-2xl shadow-sm border border-[var(--card-border)] p-10 relative overflow-hidden">
+      <section
+        id="home"
+        className="grid grid-cols-1 lg:grid-cols-[1.3fr,1fr] gap-8 bg-[var(--card)] rounded-2xl shadow-sm border border-[var(--card-border)] p-10 relative overflow-hidden"
+      >
         <div className="flex gap-5">
           <div className="flex flex-col gap-4">
             <p className="text-sm uppercase tracking-[0.24em] text-[var(--text-subtle)]">
@@ -336,7 +339,7 @@ export default function MainMenu() {
       </section>
 
     
-      <section className="mt-12 p-10">
+      <section id="services" className="mt-12 p-10">
         <div className="text-center mb-10">
           <h2 className="text-3xl font-bold text-[var(--text-strong)]">My Services</h2>
           <p className="mt-3 text-sm text-[var(--text-subtle)] max-w-xl mx-auto">
@@ -366,7 +369,7 @@ export default function MainMenu() {
         </div>
       </section>
 
-      <section className="mt-12 px-6 py-14 bg-[var(--muted)] rounded-2xl border border-[var(--card-border)]">
+      <section id="recommendations" className="mt-12 px-6 py-14 bg-[var(--muted)] rounded-2xl border border-[var(--card-border)]">
         <div className="text-center mb-10">
           <h2 className="text-3xl font-bold text-[var(--text-strong)]">Recommendations</h2>
           <p className="mt-3 text-sm text-[var(--text-subtle)] max-w-2xl mx-auto leading-relaxed">
@@ -411,7 +414,7 @@ export default function MainMenu() {
         </div>
       </section>
 
-      <section className="mt-12 px-6 py-14 bg-[var(--card)] rounded-2xl border border-[var(--card-border)]">
+       <section id="education" className="mt-12 px-6 py-14 bg-[var(--card)] rounded-2xl border border-[var(--card-border)]">
         <div className="text-center mb-10">
           <h2 className="text-3xl font-bold text-[var(--text-strong)]">Education</h2>
           <p className="mt-3 text-sm text-[var(--text-subtle)] max-w-2xl mx-auto leading-relaxed">
@@ -445,7 +448,7 @@ export default function MainMenu() {
         </div>
       </section>
 
-       <section className="mt-12 px-6 py-14 ">
+       <section id="portfolio" className="mt-12 px-6 py-14 ">
         <div className="text-center mb-8">
           <h2 className="text-3xl font-bold text-[var(--text-strong)]">Portfolio</h2>
           <p className="mt-3 text-sm text-[var(--text-subtle)] max-w-xl mx-auto leading-relaxed">
@@ -549,7 +552,7 @@ export default function MainMenu() {
         </div>
       )}
 
-        <section className="mt-12 px-6 py-14 rounded-2xl">
+        <section id="blogs" className="mt-12 px-6 py-14 rounded-2xl">
         <div className="text-center mb-10">
           <h2 className="text-3xl font-bold text-[var(--text-strong)]">Blog</h2>
           <p className="mt-3 text-sm text-[var(--text-subtle)] max-w-2xl mx-auto leading-relaxed">

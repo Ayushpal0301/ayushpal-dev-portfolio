@@ -1,24 +1,45 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { useTheme } from "../theme-provider";
 
 type NavItem = {
   label: string;
-  active?: boolean;
+  id: string;
   path: string;
 };
 
 const navItems: NavItem[] = [
   {
     label: "Home",
-    active: true,
+    id: "home",
     path: "M4 11.5 12 5l8 6.5V20a1 1 0 0 1-1 1h-5v-5h-4v5H5a1 1 0 0 1-1-1v-8.5Z",
   },
-  { label: "Gallery", path: "M4 6h16v12H4V6Zm3 2v6h10V8H7Zm2 1h3v3H9V9Z" },
-  { label: "Users", path: "M12 12a3 3 0 1 0 0-6a3 3 0 0 0 0 6Zm-6.5 6a4.5 4.5 0 0 1 9 0H5.5Zm9 0a4.5 4.5 0 0 1 6-4.2v1c0 1.5-.8 2.8-2 3.6H14.5Z" },
-  { label: "Projects", path: "M5 6h14v12H5V6Zm2 2v8h10V8H7Zm2 1h3v3H9V9Z" },
-  { label: "Blog", path: "M7 5h10v14H7V5Zm2 2v2h6V7H9Zm0 4v2h6v-2H9Zm0 4v2h6v-2H9Z" },
-  { label: "Contact", path: "M4 7h16v10H4V7Zm2 2v6h12V9H6Zm1.5 1.5 3.5 2.5 3.5-2.5" },
+  {
+    label: "Services",
+    id: "services",
+    path: "M11.983 2.25c-.355 0-.707.018-1.056.053a.75.75 0 0 0-.659.621l-.3 1.8a7.49 7.49 0 0 0-1.63.94l-1.67-.7a.75.75 0 0 0-.908.217 9.044 9.044 0 0 0-1.5 2.598.75.75 0 0 0 .377.966l1.6.8a7.52 7.52 0 0 0 0 1.88l-1.6.8a.75.75 0 0 0-.377.966 9.04 9.04 0 0 0 1.5 2.598.75.75 0 0 0 .908.217l1.67-.7a7.49 7.49 0 0 0 1.63.94l.3 1.8a.75.75 0 0 0 .659.621c.695.07 1.4.07 2.095 0a.75.75 0 0 0 .659-.62l.3-1.8a7.49 7.49 0 0 0 1.63-.94l1.67.7a.75.75 0 0 0 .908-.217 9.05 9.05 0 0 0 1.5-2.598.75.75 0 0 0-.377-.966l-1.6-.8a7.52 7.52 0 0 0 0-1.88l1.6-.8a.75.75 0 0 0 .377-.966 9.04 9.04 0 0 0-1.5-2.598.75.75 0 0 0-.908-.217l-1.67.7a7.49 7.49 0 0 0-1.63-.94l-.3-1.8a.75.75 0 0 0-.659-.621 12.09 12.09 0 0 0-2.095 0ZM12 9.75a2.25 2.25 0 1 1 0 4.5 2.25 2.25 0 0 1 0-4.5Z",
+  },
+  {
+    label: "Recommendations",
+    id: "recommendations",
+    path: "M12 2 14.09 8.26 21 8.27l-5.52 3.87 2.09 6.26L12 14.53l-5.57 3.87 2.09-6.26L3 8.27l6.91-.01L12 2Z",
+  },
+  {
+    label: "Education",
+    id: "education",
+    path: "M12 3 2 9l10 6 10-6-10-6Zm6 5.6v3.9l-6 3.6-6-3.6V8.6l6 3.6 6-3.6Z",
+  },
+  {
+    label: "Portfolio",
+    id: "portfolio",
+    path: "M9 4a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2h3a1 1 0 0 1 1 1v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a1 1 0 0 1 1-1h5Zm2 0a1 1 0 0 0-1 1h4a1 1 0 0 0-1-1h-2Zm8 4H5v9a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V8Zm-6 3h2v2h-2v-2Z",
+  },
+  {
+    label: "Blogs",
+    id: "blogs",
+    path: "M4 5h14a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Zm0 2v10h14V7H4Zm2 2h6v2H6V9Zm0 4h6v2H6v-2Zm10-4h2v6h-2V9Z",
+  },
 ];
 
 const moonPath = "M12 3c-1 1.2-1.6 2.7-1.6 4.4A6.6 6.6 0 0 0 17 14c1.7 0 3.2-.6 4.4-1.6A9 9 0 1 1 12 3Z";
@@ -27,6 +48,39 @@ const sunPath =
 
 export default function RightsideMenu() {
   const { theme, toggleTheme } = useTheme();
+  const [activeId, setActiveId] = useState<string>("home");
+
+  useEffect(() => {
+    const handleScroll = () => {
+      let closestId = navItems[0]?.id ?? "home";
+      let closestDistance = Number.POSITIVE_INFINITY;
+
+      navItems.forEach((item) => {
+        const el = document.getElementById(item.id);
+        if (!el) return;
+        const rect = el.getBoundingClientRect();
+        const distance = Math.abs(rect.top - 120); // offset to account for top padding/header
+        if (distance < closestDistance) {
+          closestDistance = distance;
+          closestId = item.id;
+        }
+      });
+
+      setActiveId(closestId);
+    };
+
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const handleClick = (item: NavItem) => {
+    const el = document.getElementById(item.id);
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth", block: "start" });
+      setActiveId(item.id);
+    }
+  };
 
   return (
     <aside className="relative h-328.75 flex flex-col items-center bg-[var(--card)] ">
@@ -47,22 +101,26 @@ export default function RightsideMenu() {
 
       <div className="z-10 flex flex-col items-center mt-30 gap-4 w-20 bg-[var(--card)] px-3 py-5  border-[var(--card-border)]">
         {navItems.map((item) => (
-          <div key={item.label}>
+          <div key={item.label} className="relative group">
             <button
+              onClick={() => handleClick(item)}
               className={`grid h-12 w-12 place-items-center rounded-full border transition shadow-sm ${
-                item.active
-                  ? "border-[var(--accent)] bg-[var(--accent)] text-white"
+                item.id === activeId
+                  ? "border-[#f2aa41] bg-[#f2aa41] text-white"
                   : "border-transparent bg-[var(--muted)] text-[var(--text-subtle)] hover:bg-[var(--card-border)]/30"
               }`}
               aria-label={item.label}
             >
               <svg
                 viewBox="0 0 24 24"
-                className={`h-5 w-5 ${item.active ? "fill-white" : "fill-[var(--text-subtle)]"}`}
+                className={`h-5 w-5 ${item.id === activeId ? "fill-white" : "fill-[var(--text-subtle)]"}`}
               >
                 <path d={item.path} />
               </svg>
             </button>
+            <span className="pointer-events-none absolute left-1/2 -translate-x-1/2 -top-2 -translate-y-full whitespace-nowrap rounded-md border border-[var(--card-border)] bg-[var(--card)] px-2 py-1 text-xs font-medium text-[var(--text-strong)] shadow-md opacity-0 group-hover:opacity-100 transition duration-150">
+              {item.label}
+            </span>
           </div>
         ))}
       </div>
