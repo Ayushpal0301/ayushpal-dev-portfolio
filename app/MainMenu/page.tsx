@@ -376,7 +376,7 @@ export default function MainMenu() {
         <div className="text-center mb-10">
           <h2 className="text-3xl font-bold text-[var(--text-strong)]">My Services</h2>
           <p className="mt-3 text-sm text-[var(--text-subtle)] max-w-xl mx-auto">
-            Tailor-made interfaces, design systems, and product narratives that help brands launch quickly and stand out online.
+            Custom web solutions and modern interfaces that help businesses launch faster and grow online.
           </p>
         </div>
         <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
@@ -477,8 +477,7 @@ export default function MainMenu() {
         <div className="text-center mb-10">
           <h2 className="text-3xl font-bold text-[var(--text-strong)]">Recommendations</h2>
           <p className="mt-3 text-sm text-[var(--text-subtle)] max-w-2xl mx-auto leading-relaxed">
-            Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit
-            mollit. Lorem ipsum.
+           Ayush developed a clean and responsive website for our organization. The design looks modern and works perfectly on all devices.
           </p>
         </div>
         <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
@@ -522,8 +521,7 @@ export default function MainMenu() {
         <div className="text-center mb-10">
           <h2 className="text-3xl font-bold text-[var(--text-strong)]">Education</h2>
           <p className="mt-3 text-sm text-[var(--text-subtle)] max-w-2xl mx-auto leading-relaxed">
-            Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit
-            mollit. Lorem ipsum.
+            Building a strong foundation in programming, web technologies, and software development.
           </p>
         </div>
         <div className="divide-y divide-[var(--card-border)]">
@@ -556,8 +554,7 @@ export default function MainMenu() {
         <div className="text-center mb-8">
           <h2 className="text-3xl font-bold text-[var(--text-strong)]">Portfolio</h2>
           <p className="mt-3 text-sm text-[var(--text-subtle)] max-w-xl mx-auto leading-relaxed">
-            Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit
-            mollit. Lorem ipsum.
+            A selection of projects showcasing my skills in modern web development and UI design.
           </p>
         </div>
 
@@ -660,8 +657,7 @@ export default function MainMenu() {
         <div className="text-center mb-10">
           <h2 className="text-3xl font-bold text-[var(--text-strong)]">Blog</h2>
           <p className="mt-3 text-sm text-[var(--text-subtle)] max-w-2xl mx-auto leading-relaxed">
-            Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit
-            mollit. Lorem ipsum.
+           Sharing insights, tutorials, and experiences about web development and modern technologies.
           </p>
         </div>
 
@@ -900,7 +896,7 @@ export default function MainMenu() {
       {/* Footer */}
       <footer className="mt-14 px-6 pb-12">
         <div className="mx-auto max-w-5xl rounded-xl border border-[var(--card-border)] bg-[var(--card)] py-5 text-center text-sm text-[var(--text-strong)] shadow-sm">
-          (c) {new Date().getFullYear()} All Rights Reserved. Ayush Pal
+          (c) {new Date().getFullYear()} All Rights Reserved. Developed by Ayush Pal
         </div>
       </footer>
 
