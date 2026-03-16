@@ -17,6 +17,7 @@ import bookStore from "../../public/assets/bookStore.png";
 import gharKira from "../../public/assets/gharKira.png"; 
 import landingpage from "../../public/assets/landingpage.png"; 
 import ycDirectory from "../../public/assets/ycDirectory.png"; 
+import amazonfrontend from "../../public/assets/amazonfronted.png"; 
 
 const techLogos = [
   { name: "Next.js", src: "https://cdn.simpleicons.org/nextdotjs" },
@@ -179,16 +180,15 @@ const blogPosts: BlogPost[] = [
     technology: ["HTML5", "CSS3", "Responsive Design", "Flexbox / Grid"],
   },
   {
-    title: "Online Book Store Web Application",
-    excerpt: "A responsive web application that allows users to browse books and add them to a shopping cart for purchase.",
-    image: bookStore,
-    cta: "Learn More",
+    title: "Amazon Clone – E-Commerce Website UI",
+    excerpt: "A responsive Amazon-inspired e-commerce website interface built using modern frontend technologies.",
+    image: amazonfrontend,
+    cta: "View Case Study",
     body:
-      "The Online Book Store is a modern web application that allows users to explore a collection of books with details such as title, author, and price. Users can easily browse through different books and add them to their shopping cart for purchase. The application provides an interactive and user-friendly interface with a product card layout and a dynamic cart system. This project demonstrates front-end development skills including component-based UI design, state management, and responsive layout using modern web technologies.",
-    features: ["Book Listing", "Add to Cart Functionality", "Dynamic Cart Counter","Product Card Layout","Responsive Design"],
-    technology: ["React.js", "JavaScript (ES6)", "HTML5","CSS3 / Bootstrap"],
-  },
-  {
+      "The Amazon Clone is a fully responsive e-commerce website interface inspired by the design and functionality of Amazon. This project focuses on creating a clean and modern user interface that replicates key components of a real online shopping platform such as the navigation bar, product listings, category sections, and promotional banners. The goal of this project was to practice frontend development skills and understand how large e-commerce platforms structure their UI components. The website includes a dynamic layout with multiple product cards, promotional sections, and a responsive design that adapts across different screen sizes. This project demonstrates strong skills in HTML, CSS, layout design, and UI development while following real-world e-commerce design patterns.",
+    features: ["Responsive e-commerce website layout", "Responsive e-commerce website layout", "Clean and modern UI design"],
+    technology: ["HTML5", "HTML5", "JavaScript"], 
+    },{
     title: "House Rental & Tenant Management System",
     excerpt: "A web-based dashboard to manage rental houses, tenants, payments, and billing in one place.",
     image: gharKira,
@@ -208,6 +208,17 @@ const blogPosts: BlogPost[] = [
     features: ["Startup Pitch Submission", "Startup Listing", "Search Functionality","View Counter","Responsive UI"],
     technology: ["React.js","Tailwind CSS", "JavaScript (ES6)"],
   },
+  {
+    title: "Online Book Store Web Application",
+    excerpt: "A responsive web application that allows users to browse books and add them to a shopping cart for purchase.",
+    image: bookStore,
+    cta: "Learn More",
+    body:
+      "The Online Book Store is a modern web application that allows users to explore a collection of books with details such as title, author, and price. Users can easily browse through different books and add them to their shopping cart for purchase. The application provides an interactive and user-friendly interface with a product card layout and a dynamic cart system. This project demonstrates front-end development skills including component-based UI design, state management, and responsive layout using modern web technologies.",
+    features: ["Book Listing", "Add to Cart Functionality", "Dynamic Cart Counter","Product Card Layout","Responsive Design"],
+    technology: ["React.js", "JavaScript (ES6)", "HTML5","CSS3 / Bootstrap"],
+  },
+  
 ];
 
 const features = [
